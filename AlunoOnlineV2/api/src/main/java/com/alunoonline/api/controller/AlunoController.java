@@ -58,8 +58,8 @@ public class AlunoController {
     @PutMapping("/{id}")
     // Resposta da requisição
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Aluno> update(@RequestBody Aluno aluno){
-        Aluno alunoUpdate = service.update2(aluno);
+    public ResponseEntity<Aluno> update(@PathVariable Long id,@RequestBody Aluno aluno){
+        Aluno alunoUpdate = service.update(id,aluno);
 
         return ResponseEntity.status(204).body(alunoUpdate);
     }

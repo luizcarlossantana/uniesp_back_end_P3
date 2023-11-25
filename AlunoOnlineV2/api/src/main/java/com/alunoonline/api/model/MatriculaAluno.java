@@ -1,5 +1,6 @@
 package com.alunoonline.api.model;
 
+import com.alunoonline.api.model.enums.StatusMatricula;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,5 +28,7 @@ public class MatriculaAluno {
 
     private Double nota2;
 
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private StatusMatricula status;
 }

@@ -1,12 +1,11 @@
 package com.alunoonline.api.service;
 
+import com.alunoonline.api.exception.AtributosNulosException;
+import com.alunoonline.api.exception.IdNaoEncontadoException;
 import com.alunoonline.api.model.Aluno;
 import com.alunoonline.api.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +19,8 @@ public class AlunoService {
 
     // método para criar aluno
     public Aluno create(Aluno aluno){
+
+        validateAlunoCreated(aluno);
         return repository.save(aluno);
     }
 
@@ -30,17 +31,23 @@ public class AlunoService {
 
     //método para buscar um aluno pelo Id
     public Optional<Aluno> findById(Long id){
+
+        validateAlunoNull(id);
         return repository.findById(id);
     }
 
     // método para deletar um aluno pelo Id
     public void delete(Long id){
+
+        validateAlunoNull(id);
         repository.deleteById(id);
     }
 
     //método para atualizar um aluno pelo Id
      public Aluno update(Long id, Aluno aluno){
-        Aluno alunoUpdated = repository.findById(id).get();
+
+        Aluno alunoUpdated = validateAlunoNull(id);
+
         if (aluno.getNome() != null) {
             alunoUpdated.setNome(aluno.getNome());
         }
@@ -53,20 +60,31 @@ public class AlunoService {
         return repository.save(alunoUpdated);
     }
 
-    public Aluno update2(Aluno aluno) {
 
-        if (aluno.getNome() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não pode ser nulo");
+
+    private Aluno validateAlunoNull(Long id)  {
+
+        Optional<Aluno> alunoCreated = repository.findById(id);
+
+        if (alunoCreated.isEmpty()){
+            throw new IdNaoEncontadoException("Id não encontrado ");
+        }
+        else {
+            return alunoCreated.get();
         }
 
-        if (aluno.getEmail() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não pode ser nulo");
-        }
+    }
 
-        if (aluno.getCurso() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não pode ser nulo");
-        }
+    private void validateAlunoCreated(Aluno aluno){
 
-        return repository.save(aluno);
+        if (aluno.getNome() == null){
+            throw new AtributosNulosException("Nenhum atributo deve ser nulo ");
+        }
+        if (aluno.getCurso() == null){
+            throw new AtributosNulosException("Nenhum atributo deve ser nulo ");
+        }
+        if (aluno.getEmail() == null){
+            throw new AtributosNulosException("Nenhum atributo deve ser nulo ");
+        }
     }
 }

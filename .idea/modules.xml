@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AlunoOnline/api/api.iml" filepath="$PROJECT_DIR$/AlunoOnline/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AlunoOnlineV2/api/api (1) (com.alunoonline).iml" filepath="$PROJECT_DIR$/AlunoOnlineV2/api/api (1) (com.alunoonline).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/uniesp_back_end_P3.iml" filepath="$PROJECT_DIR$/.idea/uniesp_back_end_P3.iml" />
+    </modules>
+  </component>
+</project>

@@ -2,6 +2,7 @@ package com.alunoonline.api.controller;
 
 import com.alunoonline.api.model.MatriculaAluno;
 import com.alunoonline.api.model.dtos.matricula.MatriculaAlunoDTO;
+import com.alunoonline.api.model.dtos.matricula.MatriculaAlunoFindByIdDTO;
 import com.alunoonline.api.model.dtos.matricula.MediaAlunoDTO;
 import com.alunoonline.api.service.MatriculaAlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,12 @@ public class MatriculaAlunoController {
 
         return ResponseEntity.ok().body(matriculaCalculada);
 
+    }
+
+    @GetMapping("/matricula-aluno/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<MatriculaAlunoFindByIdDTO> matriculaAlunoFindByIdDTO(@PathVariable Long id){
+        MatriculaAlunoFindByIdDTO matriculaAlunoFindByIdDTO = service.matriculaFindById(id);
+        return ResponseEntity.ok().body(matriculaAlunoFindByIdDTO);
     }
 }

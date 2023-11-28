@@ -4,6 +4,7 @@ import com.alunoonline.api.exception.AtributosNulosException;
 import com.alunoonline.api.exception.IdNaoEncontadoException;
 import com.alunoonline.api.model.MatriculaAluno;
 import com.alunoonline.api.model.dtos.matricula.MatriculaAlunoDTO;
+import com.alunoonline.api.model.dtos.matricula.MatriculaAlunoFindByIdDTO;
 import com.alunoonline.api.model.dtos.matricula.MediaAlunoDTO;
 import com.alunoonline.api.model.enums.StatusMatricula;
 import com.alunoonline.api.repository.MatriculaAlunoRepository;
@@ -42,7 +43,7 @@ public class MatriculaAlunoService {
 
     }
 
-    public void updatenotas(Long id,MatriculaAlunoDTO matriculaAlunoDTO){
+    public void updateNotas(Long id,MatriculaAlunoDTO matriculaAlunoDTO){
 
         Optional<MatriculaAluno> alunoMatriculado = repository.findById(id);
 
@@ -70,6 +71,17 @@ public class MatriculaAlunoService {
        matriculaDTO.setMedia(media);
 
       return matriculaDTO;
+    }
+
+    public MatriculaAlunoFindByIdDTO matriculaFindById (Long id){
+        MatriculaAluno matriculaAluno = validatedIdNull(id);
+        MatriculaAlunoFindByIdDTO matriculaAlunoFindByIdDTO = new MatriculaAlunoFindByIdDTO();
+
+        matriculaAlunoFindByIdDTO.setAluno(matriculaAluno.getAluno());
+        matriculaAlunoFindByIdDTO.setDisciplina(matriculaAluno.getDisciplina());
+
+
+        return matriculaAlunoFindByIdDTO;
     }
 
     private MatriculaAluno alunoCalculadoPelaMedia(Long id){
@@ -124,7 +136,6 @@ public class MatriculaAlunoService {
                 return alunoMatriculado;
             }
         }
-
     }
 
 

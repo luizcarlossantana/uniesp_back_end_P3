@@ -25,8 +25,8 @@ public class MatriculaAlunoService {
         matriculaCriada.setAluno(matriculaAlunoDTO.getAluno());
         matriculaCriada.setDisciplina(matriculaAlunoDTO.getDisciplina());
         matriculaCriada.setStatus(StatusMatricula.MATRICULADO);
-        matriculaCriada.setNota1(matriculaAlunoDTO.getNota1());
-        matriculaCriada.setNota2(matriculaAlunoDTO.getNota2());
+        matriculaCriada.setNota1(0.0);
+        matriculaCriada.setNota2(0.0);
 
         repository.save(matriculaCriada);
 
@@ -35,13 +35,25 @@ public class MatriculaAlunoService {
 
     public void updateMatriculaTrancada(Long id){
 
-        MatriculaAluno alunoMatriculado = validetedIdTrancado(id);
+        MatriculaAluno alunoMatriculado = validatedIdTrancado(id);
+
+        alunoMatriculado.setStatus(StatusMatricula.TRANCADO);
 
 
+    }
 
+    public void updatenotas(Long id,MatriculaAlunoDTO matriculaAlunoDTO){
 
+        Optional<MatriculaAluno> alunoMatriculado = repository.findById(id);
 
+        if (matriculaAlunoDTO.getNota1()!= null){
+            alunoMatriculado.get().setNota1(matriculaAlunoDTO.getNota1());
+        }
+        if (matriculaAlunoDTO.getNota2()!= null){
+            alunoMatriculado.get().setNota2(matriculaAlunoDTO.getNota2());
+        }
 
+        repository.save(alunoMatriculado.get());
     }
 
     public MediaAlunoDTO findMatriculaByMedia(Long id){
@@ -62,7 +74,7 @@ public class MatriculaAlunoService {
 
     private MatriculaAluno alunoCalculadoPelaMedia(Long id){
 
-        MatriculaAluno aluno = validetedId(id);
+        MatriculaAluno aluno = validatedIdNull(id);
 
         Double media = (aluno.getNota1() + aluno.getNota2())/2;
 
@@ -76,38 +88,48 @@ public class MatriculaAlunoService {
 
     }
 
-    private MatriculaAluno validetedId(Long id){
+    private MatriculaAluno validatedIdNull(Long id) {
 
         Optional<MatriculaAluno> alunoMatriculado = repository.findById(id);
 
 
-        if (alunoMatriculado.isEmpty()){
+        if (alunoMatriculado.isEmpty()) {
             throw new IdNaoEncontadoException("Matricula não encontrada");
-        }
-        else {
-            if (alunoMatriculado.get().getNota1() == null ||alunoMatriculado.get().getNota2() == null  ){
-                throw new AtributosNulosException("Os atributos notas não podem ser nulos");
-
-            }else {
-                return alunoMatriculado.get();
-            }
-        }
-    }
-
-    private MatriculaAluno validetedIdTrancado(Long id){
-
-        Optional<MatriculaAluno> alunoMatriculado = repository.findById(id);
-
-
-        if (alunoMatriculado.isEmpty()){
-            throw new IdNaoEncontadoException("Matricula não encontrada");
-        }else {
+        } else {
             return alunoMatriculado.get();
         }
+    }
+
+    private MatriculaAluno validatedNotasNull(Long id){
+
+        MatriculaAluno alunoMatriculado = validatedIdNull(id);
+
+        if (alunoMatriculado.getNota1() == null ||alunoMatriculado.getNota2() == null  ){
+            throw new AtributosNulosException("Os atributos notas não podem ser nulos");
+
+        }else {
+            return alunoMatriculado;
+        }
+    }
+
+    private MatriculaAluno validatedIdTrancado(Long id){
+
+        MatriculaAluno alunoMatriculado = validatedIdNull(id);
+
+            if (alunoMatriculado.getNota1() != null || alunoMatriculado.getNota2() != null  ) {
+            throw new AtributosNulosException("Notas encontardas, não podemos Trancar a matricula");
+
+            }
+            else {
+                return alunoMatriculado;
+            }
+        }
 
     }
 
 
 
 
-}
+
+
+

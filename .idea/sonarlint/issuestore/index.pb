@@ -215,5 +215,3 @@ F.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_5_3_Final.xml,0\d\0dd
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/AtributosNulosException.java,a\c\ac3a8d752b5f909cf1221c868b8d11cd339728d7
 Š
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/IdNaoEncontadoException.java,5\7\5783e0b6b95d5789b394fbdf7fcdb6a4193dfad3
-„
-TAlunoOnlineV2/api/src/main/java/com/alunoonline/api/model/enums/StatusMatricula.java,1\e\1ee1cd936d2defb1ba8cce8d4f89eb314f16219e

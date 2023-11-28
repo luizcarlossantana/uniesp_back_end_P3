@@ -1,8 +1,8 @@
 package com.alunoonline.api.controller;
 
 import com.alunoonline.api.model.Professor;
-import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorDTO;
-import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorFindDTO;
+import com.alunoonline.api.model.dtos.professor.ProfessorDTO;
+import com.alunoonline.api.model.dtos.professor.ProfessorFindDTO;
 import com.alunoonline.api.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/professor")

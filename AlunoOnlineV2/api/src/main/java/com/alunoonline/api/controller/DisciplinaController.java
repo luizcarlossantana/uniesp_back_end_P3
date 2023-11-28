@@ -1,7 +1,7 @@
 package com.alunoonline.api.controller;
 
 import com.alunoonline.api.model.Disciplina;
-import com.alunoonline.api.model.dtos.DisciplinaDTO.DisciplinaDTO;
+import com.alunoonline.api.model.dtos.disciplina.DisciplinaDTO;
 import com.alunoonline.api.service.DisciplinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

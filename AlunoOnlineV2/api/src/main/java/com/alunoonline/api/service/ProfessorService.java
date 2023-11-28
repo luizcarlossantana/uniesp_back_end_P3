@@ -2,10 +2,9 @@ package com.alunoonline.api.service;
 
 import com.alunoonline.api.exception.AtributosNulosException;
 import com.alunoonline.api.exception.IdNaoEncontadoException;
-import com.alunoonline.api.model.Aluno;
 import com.alunoonline.api.model.Professor;
-import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorDTO;
-import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorFindDTO;
+import com.alunoonline.api.model.dtos.professor.ProfessorDTO;
+import com.alunoonline.api.model.dtos.professor.ProfessorFindDTO;
 import com.alunoonline.api.repository.ProfessorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.alunoonline.api.model.dtos.ProfessorDTO;
+package com.alunoonline.api.model.dtos.professor;
 
 import lombok.Data;
 

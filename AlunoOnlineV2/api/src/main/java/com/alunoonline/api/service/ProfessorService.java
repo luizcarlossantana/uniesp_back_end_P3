@@ -1,7 +1,11 @@
 package com.alunoonline.api.service;
 
+import com.alunoonline.api.exception.AtributosNulosException;
+import com.alunoonline.api.exception.IdNaoEncontadoException;
 import com.alunoonline.api.model.Aluno;
 import com.alunoonline.api.model.Professor;
+import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorDTO;
+import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorFindDTO;
 import com.alunoonline.api.repository.ProfessorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +22,34 @@ public class ProfessorService {
     @Autowired
     ProfessorRepository repository;
 
-    public Professor create(Professor professor){
-        return repository.save(professor);
+    public ProfessorDTO create(ProfessorDTO professorDTO){
+
+        Professor professor = new Professor();
+
+        professor.setNome(professorDTO.getNome());
+        professor.setEmail(professorDTO.getEmail());
+
+        validateProfessorCreated(professor);
+        Professor professorCriado = repository.save(professor);
+
+        professorDTO.setId(professorCriado.getId());
+
+        return professorDTO;
     }
 
     public List<Professor> findAll(){
         return repository.findAll();
     }
 
-    public Optional<Professor> findById(Long id){
-        return repository.findById(id);
+    public ProfessorFindDTO findById(Long id){
+
+        validateProfessorNull(id);
+        Optional<Professor> professorBuscado = repository.findById(id);
+        ProfessorFindDTO professorEncontrado = new ProfessorFindDTO();
+
+        professorEncontrado.setNome(professorBuscado.get().getNome());
+
+        return professorEncontrado;
     }
 
     public void delete(Long id){
@@ -42,5 +64,28 @@ public class ProfessorService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "E-mail não pode ser nulo");
         }
         return repository.save(professor);
+    }
+
+    private void validateProfessorCreated(Professor professor){
+
+        if (professor.getNome() == null){
+            throw new AtributosNulosException("Nenhum atributo deve ser nulo");
+        }
+        if (professor.getEmail() == null){
+            throw new AtributosNulosException("Nenhum atributo deve ser nulo");
+        }
+    }
+
+    private Professor validateProfessorNull(Long id)  {
+
+        Optional<Professor> professorCreated = repository.findById(id);
+
+        if (professorCreated.isEmpty()){
+            throw new IdNaoEncontadoException("Id não encontrado ");
+        }
+        else {
+            return professorCreated.get();
+        }
+
     }
 }

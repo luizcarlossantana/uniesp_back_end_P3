@@ -32,7 +32,4 @@ public class MatriculaAlunoController {
         return ResponseEntity.ok().body(matriculaCalculada);
 
     }
-
-
-
 }

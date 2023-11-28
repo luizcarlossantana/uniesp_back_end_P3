@@ -52,7 +52,7 @@ public class AlunoService {
        alunoEncontrado.setCurso(alunoBuscado.get().getCurso());
        alunoEncontrado.setNome(alunoBuscado.get().getNome());
 
-        return alunoEncontrado ;
+        return alunoEncontrado;
     }
 
     // método para deletar um aluno pelo Id

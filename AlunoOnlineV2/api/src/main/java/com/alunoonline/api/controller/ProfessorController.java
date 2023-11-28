@@ -1,6 +1,8 @@
 package com.alunoonline.api.controller;
 
 import com.alunoonline.api.model.Professor;
+import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorDTO;
+import com.alunoonline.api.model.dtos.ProfessorDTO.ProfessorFindDTO;
 import com.alunoonline.api.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +21,8 @@ public class ProfessorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Professor> create(@RequestBody Professor professor) {
-        Professor professorCreated = service.create(professor);
+    public ResponseEntity<ProfessorDTO> create(@RequestBody ProfessorDTO professor) {
+        ProfessorDTO professorCreated = service.create(professor);
 
         return ResponseEntity.status(201).body(professorCreated);
     }
@@ -33,7 +35,7 @@ public class ProfessorController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Professor> findById(@PathVariable Long id){
+    public ProfessorFindDTO findById(@PathVariable Long id){
         return service.findById(id);
     }
 

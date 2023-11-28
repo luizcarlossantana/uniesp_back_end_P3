@@ -165,8 +165,6 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 Š
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/AtributosNulosException.java,a\c\ac3a8d752b5f909cf1221c868b8d11cd339728d7
-„
-TAlunoOnlineV2/api/src/main/java/com/alunoonline/api/model/enums/StatusMatricula.java,1\e\1ee1cd936d2defb1ba8cce8d4f89eb314f16219e
 h
 8.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml,d\7\d748d8766080efc90fdc1cab153cb0f95a859ff1
 h

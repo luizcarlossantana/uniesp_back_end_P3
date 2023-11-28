@@ -23,7 +23,7 @@ public class MatriculaAlunoController {
         service.create(matriculaAluno);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/media/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<MediaAlunoDTO> findMatriculaPorMedia(@PathVariable Long id){
 

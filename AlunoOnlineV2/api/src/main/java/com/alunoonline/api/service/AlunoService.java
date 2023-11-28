@@ -3,6 +3,8 @@ package com.alunoonline.api.service;
 import com.alunoonline.api.exception.AtributosNulosException;
 import com.alunoonline.api.exception.IdNaoEncontadoException;
 import com.alunoonline.api.model.Aluno;
+import com.alunoonline.api.model.dtos.aluno.AlunoDTO;
+import com.alunoonline.api.model.dtos.aluno.AlunoFindDTO;
 import com.alunoonline.api.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,21 @@ public class AlunoService {
     AlunoRepository repository;
 
     // método para criar aluno
-    public Aluno create(Aluno aluno){
+    public AlunoDTO create(AlunoDTO alunoDTO){
+
+        Aluno aluno = new Aluno();
+
+        aluno.setNome(alunoDTO.getNome());
+        aluno.setCurso(alunoDTO.getCurso());
+        aluno.setEmail(alunoDTO.getEmail());
 
         validateAlunoCreated(aluno);
-        return repository.save(aluno);
+        Aluno alunoCriado = repository.save(aluno);
+
+        alunoDTO.setId(alunoCriado.getId());
+
+
+        return alunoDTO;
     }
 
     // método para buscar todos os alunos
@@ -30,10 +43,16 @@ public class AlunoService {
     }
 
     //método para buscar um aluno pelo Id
-    public Optional<Aluno> findById(Long id){
+    public AlunoFindDTO findById(Long id){
 
         validateAlunoNull(id);
-        return repository.findById(id);
+       Optional<Aluno> alunoBuscado =  repository.findById(id);
+       AlunoFindDTO alunoEncontrado = new AlunoFindDTO();
+
+       alunoEncontrado.setCurso(alunoBuscado.get().getCurso());
+       alunoEncontrado.setNome(alunoBuscado.get().getNome());
+
+        return alunoEncontrado ;
     }
 
     // método para deletar um aluno pelo Id
@@ -44,20 +63,28 @@ public class AlunoService {
     }
 
     //método para atualizar um aluno pelo Id
-     public Aluno update(Long id, Aluno aluno){
+     public AlunoDTO update(Long id, AlunoDTO alunoDTO){
 
         Aluno alunoUpdated = validateAlunoNull(id);
 
-        if (aluno.getNome() != null) {
-            alunoUpdated.setNome(aluno.getNome());
+        if (alunoDTO.getNome() != null) {
+            alunoUpdated.setNome(alunoDTO.getNome());
         }
-        if (aluno.getCurso() != null) {
-            alunoUpdated.setCurso(aluno.getCurso());
+        if (alunoDTO.getCurso() != null) {
+            alunoUpdated.setCurso(alunoDTO.getCurso());
         }
-        if (aluno.getEmail() != null) {
-            alunoUpdated.setEmail(aluno.getEmail());
+        if (alunoDTO.getEmail() != null) {
+            alunoUpdated.setEmail(alunoDTO.getEmail());
         }
-        return repository.save(alunoUpdated);
+        Aluno alunoAtualizado = repository.save(alunoUpdated);
+
+        alunoDTO.setEmail(alunoAtualizado.getEmail());
+        alunoDTO.setNome(alunoAtualizado.getNome());
+        alunoDTO.setCurso(alunoAtualizado.getCurso());
+        alunoDTO.setId(alunoAtualizado.getId());
+
+        return alunoDTO ;
+
     }
 
 

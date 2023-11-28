@@ -1,6 +1,8 @@
 package com.alunoonline.api.controller;
 
 import com.alunoonline.api.model.Aluno;
+import com.alunoonline.api.model.dtos.aluno.AlunoDTO;
+import com.alunoonline.api.model.dtos.aluno.AlunoFindDTO;
 import com.alunoonline.api.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,8 +26,8 @@ public class AlunoController {
     @PostMapping
     // Resposta da requisição
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Aluno> create(@RequestBody Aluno aluno) {
-        Aluno alunoCreated = service.create(aluno);
+    public ResponseEntity<AlunoDTO> create(@RequestBody AlunoDTO alunoDTO) {
+        AlunoDTO alunoCreated = service.create(alunoDTO);
 
         return ResponseEntity.status(201).body(alunoCreated);
     }
@@ -42,7 +44,7 @@ public class AlunoController {
     @GetMapping("/{id}")
     // Resposta da requisição
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Aluno> findById(@PathVariable Long id){
+    public AlunoFindDTO findById(@PathVariable Long id){
         return service.findById(id);
     }
 
@@ -58,8 +60,8 @@ public class AlunoController {
     @PutMapping("/{id}")
     // Resposta da requisição
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Aluno> update(@PathVariable Long id,@RequestBody Aluno aluno){
-        Aluno alunoUpdate = service.update(id,aluno);
+    public ResponseEntity<AlunoDTO> update(@PathVariable Long id,@RequestBody AlunoDTO aluno){
+        AlunoDTO alunoUpdate = service.update(id,aluno);
 
         return ResponseEntity.status(204).body(alunoUpdate);
     }

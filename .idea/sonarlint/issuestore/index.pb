@@ -1,8 +1,6 @@
 
 
 OAlunoOnlineV2/api/src/main/java/com/alunoonline/api/AlunoOnlineApplication.java,b\f\bf8dca9c4f0998b2fab502f25741ad5976c13d9a
-‚
-RAlunoOnlineV2/api/src/main/java/com/alunoonline/api/service/DisciplinaService.java,6\7\67fd6228735e7bd66a2f55550e187e8e8943aeb2
 ˆ
 XAlunoOnlineV2/api/src/main/java/com/alunoonline/api/controller/DisciplinaController.java,f\c\fc5fa0dc510157ac584bb026aaeb2c083757367f
 c
@@ -213,13 +211,9 @@ v
 F.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_4_1_2.xml,8\1\815694c0e08461a3565adc7f193e7cef7eef586b
 v
 F.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_5_3_Final.xml,0\d\0dd7a05b6fa451bcf95fc1ecde0a3fe5f42aa576
-t
-DAlunoOnlineV2/api/src/main/java/com/alunoonline/api/model/Aluno.java,5\e\5e59d2e9ce3eef44a160fc7e35b66abd92e03d95
 Š
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/AtributosNulosException.java,a\c\ac3a8d752b5f909cf1221c868b8d11cd339728d7
 Š
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/IdNaoEncontadoException.java,5\7\5783e0b6b95d5789b394fbdf7fcdb6a4193dfad3
-I
-AlunoOnlineV2/api/pom.xml,1\3\13c94a0db6f68a6fd0ed27471f88e1dcb5fd063e
 „
 TAlunoOnlineV2/api/src/main/java/com/alunoonline/api/model/enums/StatusMatricula.java,1\e\1ee1cd936d2defb1ba8cce8d4f89eb314f16219e

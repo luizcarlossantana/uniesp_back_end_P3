@@ -33,6 +33,16 @@ public class MatriculaAlunoService {
     }
 
 
+    public void updateMatriculaTrancada(Long id){
+
+        MatriculaAluno alunoMatriculado = validetedIdTrancado(id);
+
+
+
+
+
+
+    }
 
     public MediaAlunoDTO findMatriculaByMedia(Long id){
        MatriculaAluno matriculaCalculada = alunoCalculadoPelaMedia(id);
@@ -83,6 +93,20 @@ public class MatriculaAlunoService {
             }
         }
     }
+
+    private MatriculaAluno validetedIdTrancado(Long id){
+
+        Optional<MatriculaAluno> alunoMatriculado = repository.findById(id);
+
+
+        if (alunoMatriculado.isEmpty()){
+            throw new IdNaoEncontadoException("Matricula não encontrada");
+        }else {
+            return alunoMatriculado.get();
+        }
+
+    }
+
 
 
 

@@ -1,8 +1,6 @@
 
 
 OAlunoOnlineV2/api/src/main/java/com/alunoonline/api/AlunoOnlineApplication.java,b\f\bf8dca9c4f0998b2fab502f25741ad5976c13d9a
-‚
-RAlunoOnlineV2/api/src/main/java/com/alunoonline/api/service/DisciplinaService.java,6\7\67fd6228735e7bd66a2f55550e187e8e8943aeb2
 ˆ
 XAlunoOnlineV2/api/src/main/java/com/alunoonline/api/controller/DisciplinaController.java,f\c\fc5fa0dc510157ac584bb026aaeb2c083757367f
 c
@@ -163,16 +161,12 @@ R.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_8_0_1_Final.
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/IdNaoEncontadoException.java,5\7\5783e0b6b95d5789b394fbdf7fcdb6a4193dfad3
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-I
-AlunoOnlineV2/api/pom.xml,1\3\13c94a0db6f68a6fd0ed27471f88e1dcb5fd063e
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 Š
 ZAlunoOnlineV2/api/src/main/java/com/alunoonline/api/exception/AtributosNulosException.java,a\c\ac3a8d752b5f909cf1221c868b8d11cd339728d7
 „
 TAlunoOnlineV2/api/src/main/java/com/alunoonline/api/model/enums/StatusMatricula.java,1\e\1ee1cd936d2defb1ba8cce8d4f89eb314f16219e
-t
-DAlunoOnlineV2/api/src/main/java/com/alunoonline/api/model/Aluno.java,5\e\5e59d2e9ce3eef44a160fc7e35b66abd92e03d95
 h
 8.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml,d\7\d748d8766080efc90fdc1cab153cb0f95a859ff1
 h

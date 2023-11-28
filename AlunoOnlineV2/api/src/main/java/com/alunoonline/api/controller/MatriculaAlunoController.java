@@ -34,7 +34,7 @@ public class MatriculaAlunoController {
 
     }
 
-    @GetMapping("/matricula-aluno/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<MatriculaAlunoFindByIdDTO> matriculaAlunoFindByIdDTO(@PathVariable Long id){
         MatriculaAlunoFindByIdDTO matriculaAlunoFindByIdDTO = service.matriculaFindById(id);

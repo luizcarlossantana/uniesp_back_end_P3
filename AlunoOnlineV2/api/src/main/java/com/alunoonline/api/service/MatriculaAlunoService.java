@@ -77,8 +77,8 @@ public class MatriculaAlunoService {
         MatriculaAluno matriculaAluno = validatedIdNull(id);
         MatriculaAlunoFindByIdDTO matriculaAlunoFindByIdDTO = new MatriculaAlunoFindByIdDTO();
 
-        matriculaAlunoFindByIdDTO.setAluno(matriculaAluno.getAluno());
-        matriculaAlunoFindByIdDTO.setDisciplina(matriculaAluno.getDisciplina());
+        matriculaAlunoFindByIdDTO.setAluno(matriculaAluno.getAluno().getNome());
+        matriculaAlunoFindByIdDTO.setDisciplina(matriculaAluno.getDisciplina().getNome());
 
 
         return matriculaAlunoFindByIdDTO;

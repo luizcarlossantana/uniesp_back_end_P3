@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class MatriculaAlunoFindByIdDTO {
-    private Aluno aluno;
-    private Disciplina disciplina;
+    private String aluno;
+    private String disciplina;
 }
